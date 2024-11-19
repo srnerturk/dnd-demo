@@ -1,0 +1,288 @@
+body {
+    font-family: 'Crimson Text', serif;
+    background-image: url('https://www.transparenttextures.com/patterns/old-map.png'),
+         radial-gradient(circle at center, #2a2a2a 100%, #1a1a1a 100%);
+    background-blend-mode: overlay;
+    color: #d4d4d4;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+}
+
+#game-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.game-row {
+    height: calc(100vh - 350px);
+    min-height: 600px;
+}
+
+#game-log {
+    font-family: 'Crimson Text', serif;
+    line-height: 1.6;
+    padding: 1rem;
+    background-color: rgba(42, 42, 42, 0.95);
+    border: 1px solid #3d3d3d;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    height: 500px;
+    overflow-y: auto;
+    margin-bottom: 0;
+}
+
+#game-log p {
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+}
+
+.stat-card {
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'),
+                     linear-gradient(to bottom, #2a1810 0%, #1a0f0a 100%);
+    background-blend-mode: overlay;
+    border: 20px solid transparent;
+    border-image: url('https://www.transparenttextures.com/patterns/stone-wall.png') 30 stretch;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+}
+
+.medieval-title {
+    font-family: 'MedievalSharp', cursive;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #8B4513;
+    padding-bottom: 0.5rem;
+    position: relative;
+    text-align: center;
+}
+
+.medieval-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #8B4513, transparent);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: rgba(139, 69, 19, 0.2);
+    border-radius: 5px;
+    border: 1px solid rgba(139, 69, 19, 0.3);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    background: rgba(139, 69, 19, 0.3);
+    transform: translateX(5px);
+}
+
+.stat-item i {
+    width: 30px;
+    margin-right: 15px;
+    font-size: 1.4em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.progress {
+    height: 25px;
+    background-color: rgba(61, 61, 61, 0.5);
+    border: 1px solid #8B4513;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 1rem 0;
+}
+
+.progress-bar {
+    background: linear-gradient(45deg, #4a5, #3a4);
+    color: #fff;
+    font-family: 'MedievalSharp', cursive;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: width 0.5s ease;
+}
+
+.text-danger {
+    color: #ff4d4d;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.text-warning {
+    color: #ffd700;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.text-gold {
+    color: #ffd700;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.text-info {
+    color: #87CEEB;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.stat-item span {
+    color: #ffd700;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.location-text {
+    color: #8a9cff;
+}
+
+.combat-text {
+    color: #ff8a8a;
+}
+
+.loot-text {
+    color: #ffd700;
+}
+
+.level-up-text {
+    color: #90EE90;
+}
+
+#map-display {
+    font-family: monospace;
+    white-space: pre;
+    background-color: #2a2a2a;
+    padding: 10px;
+    border-radius: 5px;
+    height: calc(100% - 50px);
+    overflow: auto;
+}
+
+.btn-outline-secondary {
+    border-color: #4d4d4d;
+    color: #d4d4d4;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #3d3d3d;
+    border-color: #5d5d5d;
+    color: #fff;
+}
+
+.card {
+    background-color: rgba(42, 42, 42, 0.95);
+    border: 1px solid #3d3d3d;
+    backdrop-filter: blur(5px);
+}
+
+.input-group {
+    margin-top: auto;
+}
+
+.form-control {
+    background-color: #1a1a1a;
+    border-color: #3d3d3d;
+    color: #d4d4d4;
+}
+
+.form-control:focus {
+    background-color: #1a1a1a;
+    border-color: #4d4d4d;
+    color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(255,255,255,0.1);
+}
+
+.input-group .form-control {
+    background-color: rgba(26, 26, 26, 0.9);
+    border: 1px solid #3d3d3d;
+    color: #d4d4d4;
+    font-family: 'Crimson Text', serif;
+}
+
+.input-group .btn {
+    font-family: 'MedievalSharp', cursive;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card h3 {
+    font-family: 'MedievalSharp', cursive;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #3d3d3d;
+    padding-bottom: 0.5rem;
+}
+
+h1.text-center {
+    font-family: 'MedievalSharp', cursive;
+    color: #ffd700;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+}
+
+.modal-content {
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'),
+                     linear-gradient(to bottom, #2a1810 0%, #1a0f0a 100%);
+    background-blend-mode: overlay;
+    border: 2px solid #8B4513;
+    color: #d4d4d4;
+}
+
+.modal-header {
+    border-bottom: 1px solid #8B4513;
+}
+
+.modal-footer {
+    border-top: 1px solid #8B4513;
+}
+
+.modal-header .medieval-title {
+    margin: 0;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.modal .form-control {
+    background-color: rgba(26, 26, 26, 0.9);
+    border: 1px solid #8B4513;
+    color: #d4d4d4;
+}
+
+.modal .btn-primary {
+    background-color: #8B4513;
+    border-color: #654321;
+    font-family: 'MedievalSharp', cursive;
+}
+
+.modal .btn-primary:hover {
+    background-color: #654321;
+    border-color: #483C32;
+}
